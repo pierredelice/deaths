@@ -1,0 +1,9 @@
+
+pandas
+numpy
+#string
+#re
+#os
+nltk
+tweak
+dataset
