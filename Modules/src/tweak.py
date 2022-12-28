@@ -6,7 +6,8 @@ from pandas import (
     to_datetime,
 )
 import nltk
-nltk.download('punkt')
+#nltk.download('punkt')
+nltk.download('stopwords')
 from nltk.corpus import stopwords
 from nltk.tokenize.treebank import (
     TreebankWordDetokenizer, 
@@ -104,7 +105,8 @@ class Tweak:
         
         self.data['miscol'] = DataFrame(np.where([self.data.isna().any(axis=1)],1,0)).T
         self.data['nom_c'] = (self.data['nom_c']
-                                .astype(str).str.lower())
+                                .astype(str).str.lower()
+                                )
         self.data['nom_c'] = (self.data['nom_c'].str.translate(
                                     str.maketrans('','',self.punct)
                                     )
@@ -116,11 +118,11 @@ class Tweak:
             .str.join(" ")
             .str.replace(r".desconocido.","", regex=True)
             .str.replace(r"desconocidos*","", regex=True)
-            .str.replace(r"desconocidos*","", regex=True)
             .str.replace(r"desconoci...*","", regex=True)
             .str.replace(r".desconocidos*","", regex=True)
             .str.replace(r"identificado","", regex=True)
             .str.replace(r"^masculino$","", regex=True)
+            .str.replace(r"masculino","", regex=True)
             .str.replace(r"^nan$","", regex=True)
             .str.replace(r"xx xx xx","", regex=True))
         

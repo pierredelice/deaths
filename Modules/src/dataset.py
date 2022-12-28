@@ -39,7 +39,7 @@ class Dataset:
     
     def _get_file(self) -> str:
         file = glob.glob(
-                join(self.params['path'],
+                join(self.params['path_data'],
                     self.params['dataset']
                     )
                 )
