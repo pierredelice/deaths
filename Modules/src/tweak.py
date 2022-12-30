@@ -94,8 +94,7 @@ class Tweak:
         self.digit = str.maketrans('', '', string.digits)
         #Remove unnecessary characters
         self.stopword_es = stopwords.words('spanish')
-        self.words_to_remove =['no','se','nn',
-            'bis','seis','desconocido','desconocida',
+        self.words_to_remove =['seis','desconocido','desconocida',
             'ignora','individuo','cadaver',
             'especificado','especificada',
             'masculino''identificado','numero',
@@ -128,7 +127,7 @@ class Tweak:
         
         self.data['nombre'] = (
             self.data['nombre'].apply(word_tokenize)
-            .apply(lambda x: [word for word in x if not word in self.stopword_es])
+            #.apply(lambda x: [word for word in x if not word in self.stopword_es])
             .apply(lambda x: [word for word in x if not word in self.words_to_remove])
             .apply(TreebankWordDetokenizer().detokenize)
             )
