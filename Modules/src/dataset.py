@@ -47,7 +47,7 @@ class Dataset:
 
     def _read(self) -> DataFrame: # type: ignore
         file = self._get_file() 
-        data =  pd.concat([pd.read_csv(
+        data = pd.concat([pd.read_csv(
             idx,sep='|',
             usecols= self.cols,
             low_memory=False) for idx in file]
